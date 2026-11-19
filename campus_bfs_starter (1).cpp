@@ -78,12 +78,12 @@ std::vector<Vertex> shortestRoute(const Graph& graph, Vertex start, Vertex goal)
         for (const Vertex next : graph[current])
         {
         
-            if (seen[next])
-                continue;
-
-            seen[next] = true;
-            parent[next] = current;
-            pending.push(next);
+            if (!seen[next])
+            {
+                seen[next] = true;
+                parent[next] = current;
+                pending.push(next);   
+            }
         }
     }
 
