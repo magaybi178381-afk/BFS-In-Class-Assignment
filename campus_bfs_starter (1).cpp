@@ -59,7 +59,8 @@ std::vector<Vertex> shortestRoute(const Graph& graph, Vertex start, Vertex goal)
     std::vector<bool> seen(graph.size(), false);
     std::vector<Vertex> parent(graph.size(), graph.size());
     parent[start] = start;  // The discovery chain ends at the start.
-
+    
+    // TODO 1: Mark start seen and put it in the queue.
     seen[start] = true;
     pending.push(start);
 
@@ -70,11 +71,13 @@ std::vector<Vertex> shortestRoute(const Graph& graph, Vertex start, Vertex goal)
 
         if (current == goal)
         {
+             // TODO 2: Replace the empty return with the reconstructed route.
             return rebuildRoute(parent, start, goal);
         }
-
+        // TODO 3: Check current's neighbors. Mark, record, and enqueue each unseen one.
         for (const Vertex next : graph[current])
         {
+        
             if (seen[next])
                 continue;
 
